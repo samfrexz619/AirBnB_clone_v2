@@ -6,6 +6,7 @@ import models
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, DateTime
 
+
 class BaseModel:
     """A base class for all hbnb models"""
     id = Column(String(60), primary_key=True, nullable=False)
@@ -17,7 +18,7 @@ class BaseModel:
         Instatntiates a new model
         Args:
             args: args
-            kwargs: args 
+            kwargs: args
         Attrs:
             id: id generated
             created_at: creation

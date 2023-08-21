@@ -9,11 +9,13 @@ from models.review import Review
 from sqlalchemy.ext.declarative import declarative_base
 import models
 
+
 metadata = Base.metadata
 
+
 class Place(BaseModel, Base):
-    """ 
-    A place to stay 
+    """
+    A place to stay
     Attrs:
         city_id: city id
         user_id: user id

@@ -9,6 +9,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
     __file_path = 'file.json'
@@ -33,7 +34,7 @@ class FileStorage:
     def save(self):
         """Saves storage dictionary to file"""
         obj_dic = {obj: self.__objects[obj].to_dict()
-                    for obj in self.__objects.keys()}
+                   for obj in self.__objects.keys()}
         with open(self.__file_path, 'w', encoding="UTF-8") as f:
             json.dump(obj_dic, f)
 

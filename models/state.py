@@ -7,9 +7,10 @@ from sqlalchemy.orm import relationship
 import models
 import os
 
+
 class State(BaseModel, Base):
-    """ 
-    State class 
+    """
+    State class
     Attr:
         name: input
     """
