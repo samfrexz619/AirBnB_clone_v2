@@ -19,15 +19,15 @@ class FileStorage:
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
 
-        c_dict = {}
+        dic = {}
         if cls:
             dictionary = self.__objects
             for key in dictionary:
-                part = key.replace('.', ' ')
-                part = shlex.split(part)
-                if (part[0] == cls.__name__):
-                    c_dict[key] = self.__objects[key]
-            return (c_dict)
+                partition = key.replace('.', ' ')
+                partition = shlex.split(partition)
+                if (partition[0] == cls.__name__):
+                    dic[key] = self.__objects[key]
+            return (dic)
         else:
             return self.__objects
 
@@ -43,19 +43,19 @@ class FileStorage:
 
     def save(self):
         """Saves storage dictionary to file"""
-        obj_dic = {obj: self.__objects[obj].to_dict()
-                   for obj in self.__objects.keys()}
+        my_dict = {}
+        for key, value in self.__objects.items():
+            my_dict[key] = value.to_dict()
         with open(self.__file_path, 'w', encoding="UTF-8") as f:
-            json.dump(obj_dic, f)
+            json.dump(my_dict, f)
 
     def reload(self):
         """Loads storage dictionary from file"""
         try:
             with open(self.__file_path, 'r', encoding="UTF-8") as f:
-                for obj in json.load(f).values():
-                    name = obj["__class__"]
-                    del obj["__class__"]
-                    self.new(eval(name)(**obj))
+                for key, value in (json.load(f)).items():
+                    value = eval(value["__class__"])(**value)
+                    self.__objects[key] = value
         except FileNotFoundError:
             pass
 
