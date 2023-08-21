@@ -8,6 +8,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+import shlex
 
 
 class FileStorage:
@@ -37,7 +38,7 @@ class FileStorage:
             obj: object
         """
         if obj:
-            key = f'{type(obj).__name__}.{obj.id}'
+            key = "{}.{}".format(type(obj).__name__, obj.id)
             self.__objects[key] = obj
 
     def save(self):
@@ -61,7 +62,7 @@ class FileStorage:
     def delete(self, obj=None):
         """Delete object from self objects"""
         if obj:
-            key = f'{type(obj)}.__name__}.{obj.id}'
+            key = "{}.{}".format(type(obj).__name__, obj.id)
             del self.__objects[key]
 
     def close(self):
