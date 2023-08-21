@@ -16,8 +16,7 @@ from shlex import split
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
 
-    # determines prompt for interactive/non-interactive modes
-    prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
+    prompt = '(hbnb) '
 
     classes = {
                'BaseModel': BaseModel, 'User': User, 'Place': Place,
@@ -56,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
                 try:
                     var = eval(attributes[1])
                     attributes[1] = var
-                except:
+                except Exception:
                     pass
                 if type(attributes[1]) is not tuple:
                     setattr(obj, attributes[0], attributes[1])
@@ -239,8 +238,7 @@ class HBNBCommand(cmd.Cmd):
         return " ".join(i for i in new_list)
 
     def default(self, line):
-        """retrieve all instances of a class and
-        retrieve the number of instances
+        """retrieve all instances of a class
         """
         my_list = line.split('.')
         if len(my_list) >= 2:
