@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+!/usr/bin/python3
 """This module defines a base class for all models in our hbnb clone"""
 from sqlalchemy.ext.declarative import declarative_base
 import uuid
@@ -28,11 +28,11 @@ class BaseModel:
             updated_at: updated time
         """
         if kwargs:
-            for key, value in kwargs.items():
+            for key, val in kwargs.items():
                 if key == "created_at" or key == "updated_at":
-                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    val = datetime.strptime(val, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != "__class__":
-                    setattr(self, key, value)
+                    setattr(self, key, val)
             if "id" not in kwargs:
                 self.id = str(uuid.uuid4())
             if "created_at" not in kwargs:
@@ -44,7 +44,7 @@ class BaseModel:
             self.created_at = self.updated_at = datetime.now()
 
     def __str__(self):
-        """Returns a string representation of the instance"""
+        """Returns a string representation """
         return "[{}] ({}) {}".format(
             type(self).__name__, self.id, self.__dict__)
 
@@ -54,13 +54,13 @@ class BaseModel:
         return self.__str__()
 
     def save(self):
-        """Updates updated_at with current time when instance is changed"""
+        """Updates updated_at with current time """
         self.updated_at = datetime.now()
         models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
-        """Convert instance into dict format"""
+        """Convert instance into dict """
         my_dict = dict(self.__dict__)
         my_dict["__class__"] = str(type(self).__name__)
         my_dict["created_at"] = self.created_at.isoformat()
