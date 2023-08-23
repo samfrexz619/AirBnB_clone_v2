@@ -11,7 +11,7 @@ from models.place import Place
 class City(BaseModel, Base):
     """
     The city class, contains state ID and name
-    Attr:
+    Attrs:
         state_id: state id
         name: input
     """
