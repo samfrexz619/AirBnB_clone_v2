@@ -47,7 +47,7 @@ class BaseModel:
     def __str__(self):
         """returns a string
         Return:
-            returns a string of class name, id, and dictionary
+            returns a string
         """
         return "[{}] ({}) {}".format(
             type(self).__name__, self.id, self.__dict__)
