@@ -6,7 +6,7 @@ import pycodestyle
 
 
 class test_City(test_basemodel):
-    """ """
+    """ Test City """
 
     def __init__(self, *args, **kwargs):
         """ """
@@ -15,12 +15,12 @@ class test_City(test_basemodel):
         self.value = City
 
     def test_state_id(self):
-        """ """
+        """ Test State """
         new = self.value()
         self.assertEqual(type(new.state_id), str)
 
     def test_name(self):
-        """ """
+        """ Test name """
         new = self.value()
         self.assertEqual(type(new.name), str)
 
@@ -37,7 +37,7 @@ class Test_PEP8(unittest.TestCase):
 
 
 class TestCity(unittest.TestCase):
-    """this will test the city class X"""
+    """test the city class X"""
 
     @classmethod
     def setUpClass(cls):
@@ -61,8 +61,8 @@ class TestCity(unittest.TestCase):
     def test_pep8_City(self):
         """Tests pep8 style"""
         style = pep8.StyleGuide(quiet=True)
-        p = style.check_files(['models/city.py'])
-        self.assertEqual(p.total_errors, 0, "fix pep8")
+        pp = style.check_files(['models/city.py'])
+        self.assertEqual(pp.total_errors, 0, "fix pep8")
 
     def test_checking_for_docstring_City(self):
         """checking for docstrings"""
