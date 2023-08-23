@@ -13,7 +13,7 @@ import unittest
 storage_t = getenv("HBNB_TYPE_STORAGE")
 
 class test_Amenity(test_basemodel):
-    """ """
+    """ test Amenity class """
 
     def __init__(self, *args, **kwargs):
         """ """
@@ -22,7 +22,7 @@ class test_Amenity(test_basemodel):
         self.value = Amenity
 
     def test_name2(self):
-        """ """
+        """ Test name method"""
         new = self.value()
         self.assertEqual(type(new.name), str)
 
@@ -51,16 +51,16 @@ class test_Amenity_BaseModel(unittest.TestCase):
     """Testing user class"""
     def test_instances(self):
         with patch('models.amenity'):
-            instance = Amenity()
-            self.assertEqual(type(instance), Amenity)
-            instance.name = "Barbie"
+            inst = Amenity()
+            self.assertEqual(type(inst), Amenity)
+            inst.name = "Damilola"
             expectec_attrs_types = {
                     "id": str,
                     "created_at": datetime,
                     "updated_at": datetime,
                     "name": str,
                     }
-            inst_dict = instance.to_dict()
+            inst_dict = inst.to_dict()
             expected_dict_attrs = [
                     "id",
                     "created_at",
@@ -69,14 +69,14 @@ class test_Amenity_BaseModel(unittest.TestCase):
                     "__class__"
                     ]
             self.assertCountEqual(inst_dict.keys(), expected_dict_attrs)
-            self.assertEqual(inst_dict['name'], 'Barbie')
+            self.assertEqual(inst_dict['name'], 'Damilola')
             self.assertEqual(inst_dict['__class__'], 'Amenity')
 
             for attr, types in expectec_attrs_types.items():
                 with self.subTest(attr=attr, typ=types):
-                    self.assertIn(attr, instance.__dict__)
-                    self.assertIs(type(instance.__dict__[attr]), types)
-            self.assertEqual(instance.name, "Barbie")
+                    self.assertIn(attr, inst.__dict__)
+                    self.assertIs(type(inst.__dict__[attr]), types)
+            self.assertEqual(inst.name, "Damilola")
 
     def test_user_id_and_createat(self):
         """testing id for every user"""
