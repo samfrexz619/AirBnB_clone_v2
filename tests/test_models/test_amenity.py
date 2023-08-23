@@ -86,9 +86,9 @@ class test_Amenity_BaseModel(unittest.TestCase):
         sleep(2)
         user_3 = Amenity()
         sleep(2)
-        list_users = [user_1, user_2, user_3]
-        for instance in list_users:
-            user_id = instance.id
+        ls_users = [user_1, user_2, user_3]
+        for inst in ls_users:
+            user_id = inst.id
             with self.subTest(user_id=user_id):
                 self.assertIs(type(user_id), str)
         self.assertNotEqual(user_1.id, user_2.id)
