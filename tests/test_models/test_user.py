@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-""" """
+""" Test User """
 from tests.test_models.test_base_model import test_basemodel
 from models.user import User
 
 
 class test_User(test_basemodel):
-    """ """
+    """ User Test """
 
     def __init__(self, *args, **kwargs):
         """ """
@@ -14,21 +14,21 @@ class test_User(test_basemodel):
         self.value = User
 
     def test_first_name(self):
-        """ """
+        """ First Name Test"""
         new = self.value()
         self.assertEqual(type(new.first_name), str)
 
     def test_last_name(self):
-        """ """
+        """ Last Name Test"""
         new = self.value()
         self.assertEqual(type(new.last_name), str)
 
     def test_email(self):
-        """ """
+        """ Email Test """
         new = self.value()
         self.assertEqual(type(new.email), str)
 
     def test_password(self):
-        """ """
+        """ Test Password"""
         new = self.value()
         self.assertEqual(type(new.password), str)
