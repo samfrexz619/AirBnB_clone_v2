@@ -65,9 +65,9 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """creates dictionary of the class  and returns
+        """creates dictionary
         Return:
-            returns a dictionary of all the key values in __dict__
+            returns a dictionary
         """
         my_dict = dict(self.__dict__)
         my_dict["__class__"] = str(type(self).__name__)
